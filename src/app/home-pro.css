@@ -1,0 +1,295 @@
+/* ===========================================================================
+   Professional palette. Loaded LAST and overrides the earlier layers.
+
+   - Neutral base: white / gray-50 surfaces, gray-900 text, gray-500 copy,
+     gray-200 borders (standard SaaS neutrals).
+   - One accent: deep teal, the colour already used inside Wazely CRM.
+   - No gradients, glows, tinted shadows, decorative grids or floating motion.
+=========================================================================== */
+
+:root {
+  --cl-ink: #111827;
+  --cl-soft: #4b5563;
+  --cl-line: #e5e7eb;
+  --cl-wash: #f9fafb;
+  --cl-wash-2: #f3f4f6;
+  --cl-violet: #0f766e;        /* accent (name kept so older rules follow) */
+  --cl-violet-soft: #e6f2f1;
+  --cl-shadow: 0 1px 2px #1018280d, 0 1px 3px #1018281a;
+  --pro-accent: #0f766e;
+  --pro-accent-soft: #e6f2f1;
+  --pro-panel: #f3f4f6;
+}
+
+/* Product tones collapse to the single accent on flat panels. */
+.cl-tone-crm,
+.cl-tone-erp,
+.cl-tone-color {
+  --cl-tone: var(--pro-accent);
+  --cl-tone-soft: var(--pro-accent-soft);
+  --cl-tone-wash: var(--pro-panel);
+}
+
+/* ---- Kill gradients, glows and decoration -------------------------------- */
+.cl-hero,
+.cl-hero-centered { background: #fff; border-bottom: 1px solid var(--cl-line); }
+.cl-hero-centered::after,
+.cl-hero-visual::before { display: none; }
+.cl-badge span { box-shadow: none; background: var(--pro-accent); }
+
+.cl-media,
+.cl-story-visual,
+.cl-tool,
+.cl-hero-visual,
+.cl-product-visual,
+.cl-solution-visual { background: var(--pro-panel); }
+.cl-media,
+.cl-story-visual,
+.cl-tool { border: 1px solid var(--cl-line); border-radius: 16px; }
+
+.cl-banner { border-radius: 12px; background: var(--pro-panel); border: 1px solid var(--cl-line); }
+.cl-features-section,
+.cl-process-section,
+.cl-faq-section,
+.cl-home .hv-contact { background: var(--cl-wash); }
+.cl-audience-card { background: #fff; }
+.cl-invoice-bar span { background: var(--pro-accent); }
+.cl-story-logo { background: var(--cl-ink); }
+.cl-story-answer { background: var(--cl-ink); border-radius: 10px; }
+
+/* No floating motion. */
+.cl-card,
+.cl-media .cl-card { animation: none; }
+
+/* Flat, neutral elevation everywhere. */
+.cl-card,
+.cl-story-visual li,
+.cl-process li { box-shadow: var(--cl-shadow); border: 1px solid var(--cl-line); }
+.cl-product,
+.cl-solution { box-shadow: none; }
+.cl-tab.is-active { box-shadow: var(--cl-shadow); }
+.cl-cap:hover { border-color: #d1d5db; box-shadow: var(--cl-shadow); transform: none; }
+.cl-faq-item.is-open { border-color: #d1d5db; box-shadow: var(--cl-shadow); }
+.cl-product-visual img,
+.cl-solution-visual img,
+.cl-tool-visual img { box-shadow: 0 1px 3px #1018281a; border: 1px solid var(--cl-line); }
+
+/* Tighter, more conventional radii. */
+.cl-product,
+.cl-solution { border-radius: 16px; }
+.cl-product-visual,
+.cl-solution-visual { border-radius: 12px; }
+.cl-cap,
+.cl-process li,
+.cl-audience-card,
+.cl-faq-item,
+.cl-faq-help,
+.cl-card { border-radius: 12px; }
+.cl-story-visual li { border-radius: 10px; }
+
+/* Accent usage: small and consistent. */
+.cl-eyebrow,
+.cl-home .cl-faq-category,
+.cl-product-eyebrow { color: var(--pro-accent); }
+.cl-chip-violet { background: var(--pro-accent-soft); color: var(--pro-accent); }
+.cl-process-step { background: var(--pro-accent-soft); color: var(--pro-accent); }
+.cl-feature-icon { background: var(--pro-accent-soft); color: var(--pro-accent); }
+.cl-faq-item.is-open .cl-faq-icon { background: var(--pro-accent); }
+.cl-card-journey li.is-current { color: var(--pro-accent); }
+.is-current .cl-step-dot { border-color: var(--pro-accent); box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 10px var(--pro-accent); }
+.is-done .cl-step-dot { border-color: #16a34a; background: #16a34a; }
+.cl-btn:focus-visible,
+.cl-tab:focus-visible,
+.cl-faq-filter:focus-visible { outline-color: var(--pro-accent); }
+
+/* Avatars: neutral instead of pastel rainbow. */
+.cl-avatar,
+.cl-story-visual li .cl-avatar,
+.cl-story-visual li:nth-child(2) .cl-avatar,
+.cl-story-visual li:nth-child(3) .cl-avatar { background: #e5e7eb; color: #374151; }
+
+/* Header + footer CTA */
+.site-header .wh-header-primary { background: var(--cl-ink); }
+html .site-footer .wz-footer-cta { background: var(--cl-wash); border: 1px solid var(--cl-line); border-radius: 16px; }
+html .site-footer .wz-footer-cta-kicker { color: var(--pro-accent) !important; }
+.wz-nav-free span { background: var(--pro-accent-soft); color: var(--pro-accent); }
+
+/* ---- Dark theme: neutral grays, same rules ------------------------------- */
+.dark {
+  --pro-accent: #2dd4bf;
+  --pro-accent-soft: #134e4a;
+  --pro-panel: #1f2937;
+}
+.dark .cl-home,
+.dark .cl-hero,
+.dark .cl-hero-centered,
+.dark .cl-strip,
+.dark .cl-intro,
+.dark .cl-tool-section,
+.dark .cl-story-section,
+.dark .cl-audience-section,
+.dark .cl-solutions-section { background: #111827; border-color: #1f2937; }
+.dark .cl-features-section,
+.dark .cl-process-section,
+.dark .cl-faq-section,
+.dark .cl-home .hv-contact { background: #0b1220; }
+.dark .cl-media,
+.dark .cl-story-visual,
+.dark .cl-tool,
+.dark .cl-banner,
+.dark .cl-product-visual,
+.dark .cl-solution-visual { background: #1f2937; border-color: #374151; }
+.dark .cl-card,
+.dark .cl-story-visual li,
+.dark .cl-process li,
+.dark .cl-solution,
+.dark .cl-cap,
+.dark .cl-audience-card,
+.dark .cl-faq-item,
+.dark .cl-faq-help,
+.dark .cl-faq-filter,
+.dark .cl-tabs { background: #111827; border-color: #374151; box-shadow: none; }
+.dark .cl-tab.is-active { background: #374151; }
+.dark .cl-avatar,
+.dark .cl-story-visual li .cl-avatar { background: #374151; color: #e5e7eb; }
+.dark .cl-story-answer,
+.dark .cl-story-logo { background: #374151; }
+.dark .cl-chip-violet,
+.dark .cl-process-step,
+.dark .cl-feature-icon { background: var(--pro-accent-soft); color: var(--pro-accent); }
+html.dark .site-footer { background: #111827 !important; border-color: #1f2937 !important; }
+html.dark .site-footer .wz-footer-cta { background: #1f2937; border-color: #374151; }
+html.dark .site-footer .wz-footer-cta-kicker { color: var(--pro-accent) !important; }
+.dark .site-header { background: #111827 !important; border-bottom-color: #1f2937 !important; }
+
+.dark .cl-tone-crm,
+.dark .cl-tone-erp,
+.dark .cl-tone-color { --cl-tone: var(--pro-accent); --cl-tone-soft: var(--pro-accent-soft); --cl-tone-wash: var(--pro-panel); }
+
+/* ---- Hero with side cards ------------------------------------------------ */
+.cl-hero-frame { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(0, 1fr); align-items: center; gap: 2rem; }
+.cl-hero-frame .cl-hero-center { grid-column: 2; }
+.cl-home .cl-hero-centered h1 { max-width: 16ch; }
+.cl-hero-side { display: grid; gap: 1rem; }
+.cl-hero-side .cl-card { width: 100%; max-width: 300px; margin: 0; font-size: .82rem; }
+.cl-hero-side-left { justify-items: start; transform: translateY(2.5rem); }
+.cl-hero-side-left .cl-card-invoice { margin-left: 2rem; }
+.cl-hero-side-right { justify-items: end; transform: translateY(-1.5rem); }
+.cl-hero-side .cl-card-invoice .cl-invoice-row { display: flex; align-items: center; gap: .8rem; }
+.cl-hero-side .cl-card-invoice .cl-invoice-row > div { display: grid; flex: 1; gap: .1rem; }
+.cl-hero-side .cl-card-invoice .cl-invoice-row > div span { color: #6b7280; font-size: .76rem; }
+@media (max-width: 1180px) {
+  .cl-hero-frame { grid-template-columns: 1fr; }
+  .cl-hero-frame .cl-hero-center { grid-column: 1; }
+  .cl-hero-side { display: none; }
+}
+
+/* ---- Intro media: framed real screenshot --------------------------------- */
+.cl-media-shot { display: block; padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem) 0; overflow: hidden; }
+.cl-browser { overflow: hidden; border: 1px solid var(--cl-line); border-bottom: 0; border-radius: 10px 10px 0 0; background: #fff; }
+.cl-browser-bar { display: flex; align-items: center; gap: .4rem; height: 2.2rem; padding: 0 .9rem; border-bottom: 1px solid var(--cl-line); background: #f9fafb; }
+.cl-browser-bar span { width: .6rem; height: .6rem; border-radius: 50%; background: #d1d5db; }
+.cl-browser-bar em { margin: 0 auto; padding: .1rem 1rem; border-radius: 6px; background: #f3f4f6; color: #6b7280; font-size: .72rem; font-style: normal; }
+.cl-browser img { display: block; width: 100%; height: auto; }
+.dark .cl-browser { border-color: #374151; background: #111827; }
+.dark .cl-browser-bar { background: #1f2937; border-color: #374151; }
+.dark .cl-browser-bar span { background: #4b5563; }
+.dark .cl-browser-bar em { background: #111827; color: #9ca3af; }
+@media (max-width: 640px) { .cl-browser-bar em { display: none; } }
+
+.cl-hero-frame { grid-template-columns: minmax(0, 1fr) minmax(0, 780px) minmax(0, 1fr); }
+.cl-home .cl-hero-centered h1 { max-width: 19ch; font-size: clamp(2.6rem, 4.4vw, 4.1rem); }
+@media (max-width: 1180px) {
+  .cl-hero-frame { grid-template-columns: 1fr; }
+  .cl-hero-frame .cl-hero-center { grid-column: 1; }
+  .cl-hero-side { display: none; }
+}
+
+/* Hero: no side elements; wider two-line headline. */
+.cl-hero-frame,
+.cl-hero-frame { display: block; }
+.cl-home .cl-hero-centered h1 { max-width: 30ch; font-size: clamp(2.3rem, 4.1vw, 3.9rem); line-height: 1.1; text-wrap: balance; }
+.cl-home .cl-hero-centered .cl-hero-sub { max-width: 46rem; }
+
+/* ---- Our approach to AI -------------------------------------------------- */
+.cl-ai-section { background: var(--cl-wash); border-block: 1px solid var(--cl-line); }
+.cl-ai { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+.cl-ai-intro { position: sticky; top: 7.5rem; }
+.cl-home .cl-ai-intro h2 { margin-top: .8rem; color: var(--cl-ink); font-size: clamp(1.9rem, 3vw, 2.6rem); font-weight: 600; line-height: 1.15; letter-spacing: -.03em; text-wrap: balance; }
+.cl-home .cl-ai-intro > p:not(.cl-eyebrow) { max-width: 32rem; margin: 1rem 0 1.6rem; color: var(--cl-soft); font-size: 1.05rem; line-height: 1.7; }
+.cl-ai-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.cl-ai-card { padding: 1.5rem; border: 1px solid var(--cl-line); border-radius: 12px; background: #fff; }
+.cl-ai-card-top { display: flex; align-items: center; justify-content: space-between; }
+.cl-home .cl-ai-card h3 { margin-top: 1.1rem; color: var(--cl-ink); font-size: 1.08rem; font-weight: 600; }
+.cl-home .cl-ai-card p { margin-top: .45rem; color: var(--cl-soft); font-size: .93rem; line-height: 1.55; }
+.cl-home .cl-hero-centered .cl-hero-sub { text-wrap: balance; }
+.dark .cl-ai-section { background: #0b1220; border-color: #1f2937; }
+.dark .cl-ai-card { background: #111827; border-color: #374151; }
+.dark .cl-home .cl-ai-intro h2,
+.dark .cl-home .cl-ai-card h3 { color: #f9fafb; }
+.dark .cl-home .cl-ai-intro > p:not(.cl-eyebrow),
+.dark .cl-home .cl-ai-card p { color: #9ca3af; }
+@media (max-width: 900px) {
+  .cl-ai { grid-template-columns: 1fr; }
+  .cl-ai-intro { position: static; }
+}
+@media (max-width: 560px) { .cl-ai-grid { grid-template-columns: 1fr; } }
+
+/* ---- Hero tuned to iqonic's proportions ----------------------------------
+   Measured on iqonic.tech: h1 64px / 74px line-height, normal tracking,
+   weight 600; copy 20px / 36px; #fafafa panel; filled pastel label. */
+.cl-home .cl-hero-centered { background: #fafafa; border-bottom: 1px solid var(--cl-line); }
+.cl-hero-centered .cl-hero-center { padding: clamp(5rem, 9vw, 7.5rem) 0 clamp(4.5rem, 8vw, 6.5rem); }
+.cl-hero-centered .cl-badge { padding: .4rem 1rem; border: 0; background: var(--pro-accent-soft); color: var(--pro-accent); font-size: .85rem; font-weight: 500; }
+.cl-hero-centered .cl-badge span { display: none; }
+.cl-home .cl-hero-centered h1 { max-width: 24ch; margin-top: 1.1rem; font-size: clamp(2.4rem, 4.45vw, 4rem); font-weight: 600; line-height: 1.16; letter-spacing: -.005em; }
+.cl-home .cl-hero-centered .cl-hero-sub { max-width: 52rem; margin-top: 1.1rem; color: #6b7280; font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.8; letter-spacing: -.005em; text-wrap: balance; }
+.cl-hero-centered .cl-hero-actions { gap: .75rem; margin-top: 2.4rem; }
+.cl-hero-centered .cl-btn { min-height: 3.1rem; padding: .7rem 1.6rem; font-size: 1rem; font-weight: 500; }
+.cl-hero-centered .cl-btn-light { background: #f3f4f6; border: 1px solid #e5e7eb; }
+.cl-hero-centered .cl-btn-light:hover { background: #e9eaee; }
+.dark .cl-home .cl-hero-centered { background: #0f1623; border-color: #1f2937; }
+.dark .cl-hero-centered .cl-btn-light { background: #1f2937; border-color: #374151; color: #f3f4f6; }
+
+/* ---- Product family grid (under About) ----------------------------------- */
+.cl-family { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); scroll-margin-top: 6rem; }
+.cl-family-card { display: flex; border: 1px solid var(--cl-line); border-radius: 12px; background: #fff; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.cl-family-card:hover { border-color: #d1d5db; box-shadow: var(--cl-shadow); }
+.cl-family-link { display: flex; flex-direction: column; width: 100%; color: inherit; text-decoration: none; }
+.cl-family-link:focus-visible { outline: 2px solid var(--pro-accent); outline-offset: -2px; border-radius: 12px; }
+.cl-family-shot { padding: 1rem 0 0 1rem; background: var(--pro-panel); border-bottom: 1px solid var(--cl-line); }
+.cl-family-shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--cl-line); border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
+.cl-family-body { display: flex; flex: 1; flex-direction: column; padding: 1.3rem 1.3rem 1.4rem; }
+.cl-family-title { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.cl-home .cl-family-title h3,
+.cl-home .cl-family-next h3 { color: var(--cl-ink); font-size: 1.1rem; font-weight: 600; }
+.cl-tier { padding: .15rem .5rem; border-radius: 6px; background: var(--cl-ink); color: #fff; font-size: .7rem; font-weight: 600; }
+.cl-tier-free { background: var(--pro-accent-soft); color: var(--pro-accent); }
+.cl-home .cl-family-category { margin-top: .2rem; color: #6b7280; font-size: .8rem; font-weight: 500; }
+.cl-home .cl-family-body > p:not(.cl-family-category) { margin: .7rem 0 1.1rem; color: var(--cl-soft); font-size: .92rem; line-height: 1.55; }
+.cl-family-cta { display: inline-flex; align-items: center; gap: .35rem; margin-top: auto; color: var(--cl-ink); font-size: .9rem; font-weight: 600; }
+.cl-family-link:hover .cl-family-cta { text-decoration: underline; }
+.cl-family-next { border-style: dashed; background: var(--cl-wash); }
+.cl-family-next .cl-family-body { justify-content: flex-end; }
+.cl-home .cl-family-next h3 { margin-top: 1rem; }
+.cl-family-next .cl-text-link { align-self: flex-start; margin-top: auto; }
+.dark .cl-family-card { background: #111827; border-color: #374151; }
+.dark .cl-family-shot { background: #1f2937; border-color: #374151; }
+.dark .cl-family-shot img { border-color: #374151; }
+.dark .cl-home .cl-family-title h3,
+.dark .cl-home .cl-family-next h3,
+.dark .cl-family-cta { color: #f9fafb; }
+.dark .cl-home .cl-family-body > p:not(.cl-family-category) { color: #9ca3af; }
+.dark .cl-tier { background: #f9fafb; color: #111827; }
+.dark .cl-family-next { background: #0b1220; }
+@media (max-width: 1100px) { .cl-family { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .cl-family { grid-template-columns: 1fr; } }
+
+/* ---- Fonts: same pairing as the Wazely ERP app ---------------------------
+   Instrument Sans for text and UI (set on body via --font-brand),
+   Archivo for headings. */
+h1, h2, h3,
+.section-title,
+.cl-home h1, .cl-home h2, .cl-home h3,
+.video-home h1, .video-home h2, .video-home h3 { font-family: var(--font-heading), var(--font-brand), ui-sans-serif, system-ui, sans-serif; }
+.cl-home .cl-hero-centered h1 { letter-spacing: -.015em; }

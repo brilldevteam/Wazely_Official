@@ -5,11 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
+import { useHoverMenu } from "@/components/layout/use-hover-menu";
 import { productNavigation } from "@/data/navigation";
 
 export function ProductMenu() {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const pathname = usePathname();
+  const hover = useHoverMenu(detailsRef);
 
   useEffect(() => {
     detailsRef.current?.removeAttribute("open");
@@ -42,8 +44,16 @@ export function ProductMenu() {
   }
 
   return (
-    <details ref={detailsRef} className="group relative">
-      <summary className="hover:text-navy flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium text-slate-600 transition-colors hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:outline-none">
+    <details
+      ref={detailsRef}
+      className="group relative"
+      onPointerEnter={hover.onPointerEnter}
+      onPointerLeave={hover.onPointerLeave}
+    >
+      <summary
+        onClick={hover.onSummaryClick}
+        className="hover:text-navy flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium text-slate-600 transition-colors hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:outline-none"
+      >
         Products
         <ChevronDown
           aria-hidden="true"
@@ -73,8 +83,8 @@ export function ProductMenu() {
               <span
                 className={
                   product.tier === "Pro"
-                    ? "rounded-full bg-violet-600 px-2 py-0.5 text-[10px] font-semibold text-white dark:bg-violet-500"
-                    : "rounded-full bg-cyan-100 px-2 py-0.5 text-[10px] font-semibold text-cyan-700 dark:text-cyan-300"
+                    ? "rounded-full bg-slate-900 px-2 py-0.5 text-[10px] font-semibold text-white dark:bg-white dark:text-slate-900"
+                    : "rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-200"
                 }
               >
                 {product.tier}
@@ -85,6 +95,9 @@ export function ProductMenu() {
             </span>
           </Link>
         ))}
+        <p className="mt-1 border-t border-slate-200 px-4 pt-3 pb-2 text-xs leading-5 text-slate-500">
+          More Wazely products are on the way.
+        </p>
       </div>
     </details>
   );

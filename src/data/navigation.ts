@@ -27,6 +27,14 @@ export const navigation = [
   { label: "About", sectionId: "about" },
 ] as const;
 
+// Highlighted free-product link in the header, the same slot the benchmark
+// site (iqonic.tech) uses for its free cost calculator.
+export const freeToolNavigation = {
+  label: "Free color tool",
+  badge: "Free",
+  href: siteConfig.colorUrl,
+} as const;
+
 export type NavigationItem = (typeof navigation)[number];
 
 export const knowledgeBaseNavigation = [
@@ -48,18 +56,36 @@ export const footerGroups = [
     links: [
       { label: "Wazely CRM", href: "/crm" },
       { label: "Wazely ERP", href: "/erp" },
-      { label: "Wazely Color", href: "https://color.wazely.io/" },
+      { label: "Wazely Color", href: siteConfig.colorUrl },
     ],
   },
   {
+    title: "Solutions",
+    links: [
+      { label: "Customer conversations", href: "/#solutions" },
+      { label: "Business operations", href: "/#solutions" },
+      { label: "Brand and design", href: "/#solutions" },
+    ],
+  },
+  {
+    title: "Free tool",
+    links: [{ label: "AI brand color toolkit", href: siteConfig.colorUrl }],
+  },
+  {
     title: "Resources",
-    links: [{ label: "Knowledge Base", href: "/knowledge-base" }],
+    links: [
+      { label: "Knowledge Base", href: "/knowledge-base" },
+      { label: "CRM help center", href: siteConfig.knowledgeBaseUrl },
+      { label: "ERP help center", href: siteConfig.erpKnowledgeBaseUrl },
+      { label: "FAQ", href: "/#resources" },
+    ],
   },
   {
     title: "Company",
     links: [
       { label: "About Wazely", href: "/#about" },
-      { label: "Our products", href: "/#products" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Contact us", href: "/#contact" },
     ],
   },
 ] as const;

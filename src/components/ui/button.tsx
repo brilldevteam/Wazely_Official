@@ -10,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-navy text-white shadow-[0_10px_30px_-12px_rgba(15,29,53,.65)] hover:-translate-y-0.5 hover:bg-[#162b4c] dark:bg-white dark:text-navy dark:shadow-[0_10px_30px_-12px_rgba(0,0,0,.6)] dark:hover:bg-slate-100",
+          "bg-[#15131e] text-white hover:bg-[#2c2a36] dark:bg-white dark:text-[#15131e] dark:hover:bg-slate-200",
         secondary:
-          "border border-slate-300 bg-white text-navy hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50",
+          "bg-[#f3f3f4] text-[#15131e] hover:bg-[#e7e7ea] dark:bg-white/10 dark:text-white dark:hover:bg-white/15",
         gradient:
-          "bg-[linear-gradient(115deg,#2bb3bd,#7566e0)] text-white shadow-[0_8px_20px_-13px_rgba(80,94,230,.5)] hover:-translate-y-0.5 hover:shadow-[0_10px_22px_-13px_rgba(80,94,230,.6)]",
+          "bg-[#15131e] text-white hover:bg-[#2c2a36] dark:bg-white dark:text-[#15131e] dark:hover:bg-slate-200",
         ghost: "text-navy hover:bg-slate-100",
       },
       size: {

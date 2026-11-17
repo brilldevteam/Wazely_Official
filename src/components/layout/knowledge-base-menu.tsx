@@ -5,11 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
+import { useHoverMenu } from "@/components/layout/use-hover-menu";
 import { knowledgeBaseNavigation } from "@/data/navigation";
 
 export function KnowledgeBaseMenu() {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const pathname = usePathname();
+  const hover = useHoverMenu(detailsRef);
 
   useEffect(() => {
     detailsRef.current?.removeAttribute("open");
@@ -42,8 +44,16 @@ export function KnowledgeBaseMenu() {
   }
 
   return (
-    <details ref={detailsRef} className="group relative">
-      <summary className="hover:text-navy flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium text-slate-600 transition-colors hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:outline-none">
+    <details
+      ref={detailsRef}
+      className="group relative"
+      onPointerEnter={hover.onPointerEnter}
+      onPointerLeave={hover.onPointerLeave}
+    >
+      <summary
+        onClick={hover.onSummaryClick}
+        className="hover:text-navy flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium text-slate-600 transition-colors hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:outline-none"
+      >
         Knowledge Base
         <ChevronDown
           aria-hidden="true"

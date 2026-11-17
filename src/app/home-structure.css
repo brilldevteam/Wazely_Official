@@ -1,0 +1,147 @@
+/* ===========================================================================
+   iqonic.tech section architecture, drawn in the Clario visual language.
+   Builds on tokens and components from home-clario.css.
+=========================================================================== */
+
+.cl-text-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--cl-ink); font-size: .93rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid #c9c4d8; padding-bottom: .2rem; transition: gap .2s, border-color .2s; }
+.cl-text-link:hover { gap: .65rem; border-color: var(--cl-ink); }
+.cl-chip { display: inline-flex; align-items: center; gap: .35rem; }
+
+/* ---- Trust strip --------------------------------------------------------- */
+.cl-strip { padding: 2rem 0 2.2rem; border-block: 1px solid var(--cl-line); background: #fff; text-align: center; }
+.cl-home .cl-strip p { color: #8a8796; font-size: .85rem; }
+.cl-strip ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem clamp(1.8rem, 4vw, 3.5rem); margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.cl-strip li { display: inline-flex; align-items: center; gap: .55rem; color: #6b6878; font-size: 1rem; font-weight: 600; }
+
+/* ---- Intro statement ----------------------------------------------------- */
+.cl-intro { padding: clamp(4.5rem, 8vw, 7rem) 0 0; background: #fff; }
+.cl-intro-inner { max-width: 900px; }
+.cl-home .cl-intro .cl-heading h2 { font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
+
+/* ---- Solutions tabs ------------------------------------------------------ */
+.cl-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; width: fit-content; margin: clamp(2rem, 4vw, 3rem) auto 0; padding: .35rem; border: 1px solid var(--cl-line); border-radius: 999px; background: #faf9fd; }
+.cl-tab { padding: .65rem 1.25rem; border: 0; border-radius: 999px; background: none; color: #5d5a6a; font: inherit; font-size: .93rem; font-weight: 600; cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
+.cl-tab:hover { color: var(--cl-ink); }
+.cl-tab.is-active { background: #fff; color: var(--cl-ink); box-shadow: 0 6px 18px -10px #3b2a7a55; }
+.cl-tab:focus-visible { outline: 2px solid var(--cl-violet); outline-offset: 2px; }
+.cl-solution { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: 1.5rem; padding: clamp(1rem, 2vw, 1.4rem); border: 1px solid var(--cl-line); border-radius: 28px; background: #fff; box-shadow: 0 30px 70px -50px #3b2a7a55; animation: wz-fade .35s ease-out both; }
+.cl-solution-copy { padding: clamp(1rem, 3vw, 2.4rem); }
+.cl-home .cl-solution-copy h3 { margin-top: .8rem; color: var(--cl-ink); font-size: clamp(1.6rem, 2.4vw, 2.1rem); font-weight: 600; line-height: 1.15; letter-spacing: -.025em; text-wrap: balance; }
+.cl-home .cl-solution-copy > p:not(.cl-product-eyebrow) { margin-top: .9rem; color: var(--cl-soft); line-height: 1.65; }
+.cl-solution-copy ul { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem 1rem; margin: 1.5rem 0 1.8rem; padding: 0; list-style: none; }
+.cl-solution-copy li { display: flex; align-items: center; gap: .55rem; color: #3c3a46; font-size: .92rem; }
+.cl-solution-copy li svg { flex: none; width: 19px; height: 19px; padding: 2px; border-radius: 50%; background: var(--cl-tone-soft); color: var(--cl-tone); }
+.cl-solution-visual { overflow: hidden; padding: clamp(1.2rem, 3vw, 2.4rem) 0 0 clamp(1.2rem, 3vw, 2.4rem); border-radius: 20px; background: var(--cl-tone-wash); }
+.cl-solution-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border-radius: 12px 0 0 0; box-shadow: 0 20px 50px -30px #15131e66; }
+
+/* CTA banner (iqonic: "Begin with our pre-built solution... Book a call") */
+.cl-banner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1rem; padding: 1.3rem 1.4rem 1.3rem 2rem; border-radius: 999px; background: linear-gradient(100deg, var(--cl-tone-soft), #fbeee8); }
+.cl-home .cl-banner p { color: var(--cl-ink); font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 600; letter-spacing: -.01em; }
+.cl-banner .cl-btn { flex: none; }
+
+/* ---- Free tool ----------------------------------------------------------- */
+.cl-tool-section { padding: 0 0 clamp(4.5rem, 9vw, 8rem); background: #fff; }
+.cl-tool { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(2rem, 4vw, 3.5rem); overflow: hidden; padding: clamp(2rem, 4.5vw, 4rem); border-radius: 28px; background: linear-gradient(120deg, var(--cl-wash-2) 0%, #f7efff 50%, #fdeee6 100%); }
+.cl-home .cl-tool-copy h2 { margin-top: 1rem; color: var(--cl-ink); font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 600; line-height: 1.12; letter-spacing: -.03em; text-wrap: balance; }
+.cl-home .cl-tool-copy > p:not(.cl-chip) { max-width: 30rem; margin: 1rem 0 1.8rem; color: var(--cl-soft); line-height: 1.65; }
+.cl-tool-visual img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 30px 70px -36px #4b2a6a88; }
+
+/* ---- Numbered capability cards ------------------------------------------ */
+.cl-cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.cl-cap { display: flex; flex-direction: column; padding: 1.6rem; border: 1px solid var(--cl-line); border-radius: 22px; background: #fff; transition: border-color .25s, box-shadow .25s, transform .25s; }
+.cl-cap:hover { border-color: #d8d1ec; box-shadow: 0 24px 50px -36px #3b2a7a66; transform: translateY(-3px); }
+.cl-cap-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.4rem; }
+.cl-cap-num { color: #b3aec4; font-size: .9rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cl-cap-tag { padding: .2rem .55rem; border-radius: 6px; background: #f4f2f8; color: #5d5a6a; font-size: .7rem; font-weight: 700; letter-spacing: .05em; }
+.cl-home .cl-cap h3 { margin-top: 1.1rem; color: var(--cl-ink); font-size: 1.12rem; font-weight: 600; }
+.cl-home .cl-cap p { margin: .45rem 0 1.4rem; color: var(--cl-soft); font-size: .93rem; line-height: 1.55; }
+.cl-cap .cl-text-link { margin-top: auto; align-self: flex-start; font-size: .88rem; }
+.cl-cap-grid + .cl-banner { margin-top: 1.5rem; }
+
+/* ---- Process ------------------------------------------------------------- */
+.cl-process-section { background: linear-gradient(180deg, #fff 0%, var(--cl-wash) 100%); }
+.cl-process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; padding: 0; list-style: none; counter-reset: step; }
+.cl-process li { position: relative; padding: 1.6rem 1.6rem 1.7rem; border-radius: 22px; background: #fff; box-shadow: 0 20px 50px -40px #3b2a7a66; }
+.cl-process-step { display: inline-block; padding: .25rem .65rem; border-radius: 999px; background: var(--cl-violet-soft); color: var(--cl-violet); font-size: .75rem; font-weight: 700; }
+.cl-home .cl-process h3 { margin-top: 1rem; color: var(--cl-ink); font-size: 1.08rem; font-weight: 600; line-height: 1.35; }
+.cl-home .cl-process p { margin-top: .45rem; color: var(--cl-soft); font-size: .93rem; line-height: 1.55; }
+
+/* ---- Story --------------------------------------------------------------- */
+.cl-story-section { background: #fff; }
+.cl-story { max-width: 980px; margin: 0 auto; padding: clamp(2.2rem, 5vw, 4rem); border-radius: 32px; background: var(--cl-ink); color: #fff; text-align: center; }
+.cl-story .cl-eyebrow { color: #c6b4f7; }
+.cl-home .cl-story h2 { margin-top: 1rem; color: #fff; font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 600; line-height: 1.22; letter-spacing: -.025em; text-wrap: balance; }
+.cl-home .cl-story > p:not(.cl-eyebrow) { max-width: 40rem; margin: 1.2rem auto 0; color: #c9c6d4; font-size: 1.05rem; line-height: 1.7; }
+.cl-story-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: 2rem; }
+.cl-story .cl-btn-dark { background: #fff; color: var(--cl-ink); }
+.cl-story .cl-btn-dark:hover { background: #ece9f4; }
+.cl-story .cl-btn-ghost { color: #fff; }
+.cl-story .cl-btn-ghost:hover { background: #ffffff14; }
+
+/* ---- Who it's for -------------------------------------------------------- */
+.cl-audience-section { padding-top: 0; background: #fff; }
+.cl-audience { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.cl-audience-card { padding: 1.8rem; border-radius: 22px; background: linear-gradient(160deg, var(--cl-wash) 0%, #fff 70%); border: 1px solid var(--cl-line); }
+.cl-home .cl-audience-card h3 { margin-top: 1.2rem; color: var(--cl-ink); font-size: 1.15rem; font-weight: 600; }
+.cl-home .cl-audience-card p { margin-top: .5rem; color: var(--cl-soft); font-size: .95rem; line-height: 1.6; }
+.cl-audience-tags { display: flex; gap: .4rem; margin-top: 1.3rem; }
+.cl-audience-tags span { padding: .2rem .55rem; border-radius: 6px; background: #fff; border: 1px solid var(--cl-line); color: #5d5a6a; font-size: .72rem; font-weight: 600; }
+
+/* ---- Grouped FAQ --------------------------------------------------------- */
+.cl-faq-groups { display: grid; gap: 2rem; }
+.cl-home .cl-faq-category { margin-bottom: .4rem; color: var(--cl-violet); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---- Dark theme ---------------------------------------------------------- */
+.dark .cl-strip,
+.dark .cl-intro,
+.dark .cl-tool-section,
+.dark .cl-story-section,
+.dark .cl-audience-section { background: #121117; border-color: #2c2a36; }
+.dark .cl-strip li { color: #a7a4b3; }
+.dark .cl-tabs { background: #1a1920; border-color: #2c2a36; }
+.dark .cl-tab { color: #a7a4b3; }
+.dark .cl-tab.is-active { background: #2c2a36; color: #fff; box-shadow: none; }
+.dark .cl-solution,
+.dark .cl-cap,
+.dark .cl-process li { background: #1a1920; border-color: #2c2a36; box-shadow: none; }
+.dark .cl-home .cl-solution-copy h3,
+.dark .cl-home .cl-tool-copy h2,
+.dark .cl-home .cl-cap h3,
+.dark .cl-home .cl-process h3,
+.dark .cl-home .cl-audience-card h3,
+.dark .cl-home .cl-banner p { color: #f6f5f8; }
+.dark .cl-home .cl-solution-copy > p:not(.cl-product-eyebrow),
+.dark .cl-home .cl-tool-copy > p:not(.cl-chip),
+.dark .cl-home .cl-cap p,
+.dark .cl-home .cl-process p,
+.dark .cl-home .cl-audience-card p { color: #a7a4b3; }
+.dark .cl-solution-copy li { color: #d4d1dd; }
+.dark .cl-banner { background: linear-gradient(100deg, var(--cl-tone-soft), #2a1f2a); }
+.dark .cl-tool { background: linear-gradient(120deg, #241d38 0%, #2a1f35 55%, #33221f 100%); }
+.dark .cl-cap-tag,
+.dark .cl-audience-tags span { background: #2c2a36; border-color: #2c2a36; color: #c9c6d4; }
+.dark .cl-process-section { background: linear-gradient(180deg, #121117 0%, #17141f 100%); }
+.dark .cl-process-step { background: #2b2342; color: #c6b4f7; }
+.dark .cl-story { background: #1d1830; }
+.dark .cl-audience-card { background: linear-gradient(160deg, #1d1830 0%, #1a1920 70%); border-color: #2c2a36; }
+.dark .cl-text-link { color: #f3f3f4; border-color: #4a4757; }
+.dark .cl-home .cl-faq-category { color: #b9a6f5; }
+
+/* ---- Responsive ---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .cl-solution,
+  .cl-tool { grid-template-columns: 1fr; }
+  .cl-cap-grid,
+  .cl-process,
+  .cl-audience { grid-template-columns: repeat(2, 1fr); }
+  .cl-banner { border-radius: 24px; }
+}
+@media (max-width: 640px) {
+  .cl-tabs { width: 100%; border-radius: 20px; }
+  .cl-tab { flex: 1 1 100%; }
+  .cl-solution-copy ul { grid-template-columns: 1fr; }
+  .cl-cap-grid,
+  .cl-process,
+  .cl-audience { grid-template-columns: 1fr; }
+  .cl-banner { flex-direction: column; align-items: flex-start; padding: 1.4rem; }
+}

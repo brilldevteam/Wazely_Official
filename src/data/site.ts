@@ -1,8 +1,8 @@
 export const siteConfig = {
   companyName: "Wazely",
-  title: "CRM and ERP Software for GCC Businesses | Wazely",
+  title: "Wazely | AI-Powered Business Software for Growing Teams",
   description:
-    "Wazely builds connected CRM and ERP software for customer relationships, finance, sales, and everyday operations across Qatar, Saudi Arabia, and the GCC.",
+    "Wazely is a software company building focused, AI-powered business products for growing teams across the GCC, starting with Wazely CRM, Wazely ERP and the free Wazely Color.",
   crmUrl: "https://crm.wazely.io",
   erpUrl: "https://erp.wazely.io",
   colorUrl: "https://color.wazely.io/",

@@ -10,7 +10,6 @@ import {
   navigation,
   productNavigation,
 } from "@/data/navigation";
-import { siteConfig } from "@/data/site";
 import { NavigationLink } from "@/components/layout/navigation-link";
 import { Button } from "@/components/ui/button";
 
@@ -68,8 +67,8 @@ export function MobileNavigation() {
                 <span
                   className={
                     product.tier === "Pro"
-                      ? "rounded-full bg-violet-600 px-2.5 py-1 text-[10px] font-semibold text-white dark:bg-violet-500"
-                      : "rounded-full bg-cyan-100 px-2.5 py-1 text-[10px] font-semibold text-cyan-700 dark:text-cyan-300"
+                      ? "rounded-full bg-slate-900 px-2.5 py-1 text-[10px] font-semibold text-white dark:bg-white dark:text-slate-900"
+                      : "rounded-full bg-teal-50 px-2.5 py-1 text-[10px] font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-200"
                   }
                 >
                   {product.tier}
@@ -110,8 +109,8 @@ export function MobileNavigation() {
             size="lg"
             className="mt-auto w-full"
           >
-            <Link href={siteConfig.demoUrl}>
-              Try the demo <ArrowUpRight aria-hidden="true" size={17} />
+            <Link href="/#contact" onClick={() => setOpen(false)}>
+              Talk to our team <ArrowUpRight aria-hidden="true" size={17} />
             </Link>
           </Button>
         </Dialog.Content>

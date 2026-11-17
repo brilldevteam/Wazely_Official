@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Archivo, Instrument_Sans } from "next/font/google";
 
 import "./globals.css";
+import "./home-refresh.css";
+import "./home-sections.css";
+import "./home-clario.css";
+import "./home-structure.css";
+import "./home-v3.css";
+import "./home-pro.css";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,12 +15,22 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { getSiteUrl, siteConfig } from "@/data/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-const monaSans = localFont({
-  src: "./mona-sans.woff2",
+// Same font pairing as the Wazely ERP app (erp.wazely.io): Instrument Sans
+// for text and UI, Archivo for headings. Self-hosted at build time.
+const brandSans = Instrument_Sans({
+  subsets: ["latin"],
   display: "swap",
-  variable: "--font-mona",
-  weight: "200 900",
-  fallback: ["Inter", "Arial", "sans-serif"],
+  variable: "--font-brand",
+  weight: ["400", "500", "600", "700"],
+  fallback: ["ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"],
+});
+
+const brandHeading = Archivo({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["500", "600", "700"],
+  fallback: ["ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -65,11 +81,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={monaSans.variable} suppressHydrationWarning>
+    <html lang="en" className={`${brandSans.variable} ${brandHeading.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('wazely-theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('wazely-theme');var d=t==='dark';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})();`,
           }}
         />
       </head>
