@@ -3,7 +3,7 @@
 import { ArrowUpRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -81,7 +81,56 @@ const solutions = [
 
 export function HomeSolutions() {
   const [active, setActive] = useState(0);
-  const item = solutions[active];
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  // All three solutions are stacked on the page. The tab bar sticks under
+  // the header and highlights whichever card is currently in view; clicking
+  // a tab scrolls to that card.
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const tabs = tabsRef.current?.getBoundingClientRect();
+      const line = (tabs?.bottom ?? 0) + window.innerHeight * 0.25;
+      let current = 0;
+      solutions.forEach((solution, index) => {
+        const el = document.getElementById(`solution-${solution.id}`);
+        if (el && el.getBoundingClientRect().top <= line) current = index;
+      });
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // On phones the tabs are one swipeable row; keep the active one visible.
+  useEffect(() => {
+    const bar = tabsRef.current;
+    const tab = bar?.children[active] as HTMLElement | undefined;
+    if (!bar || !tab || bar.scrollWidth <= bar.clientWidth) return;
+    bar.scrollTo({
+      left: tab.offsetLeft - (bar.clientWidth - tab.offsetWidth) / 2,
+      behavior: "smooth",
+    });
+  }, [active]);
+
+  const goTo = (index: number) => {
+    const el = document.getElementById(`solution-${solutions[index].id}`);
+    if (!el) return;
+    const tabsBottom = tabsRef.current?.getBoundingClientRect().bottom ?? 0;
+    const top = el.getBoundingClientRect().top + window.scrollY - tabsBottom - 16;
+    window.scrollTo({ top, behavior: "smooth" });
+    setActive(index);
+  };
 
   return (
     <section
@@ -101,64 +150,68 @@ export function HomeSolutions() {
           </p>
         </div>
 
-        <div className="cl-tabs" role="tablist" aria-label="Wazely solutions">
+        <div
+          ref={tabsRef}
+          className="cl-tabs cl-tabs-sticky"
+          aria-label="Wazely solutions"
+        >
           {solutions.map((solution, index) => (
             <button
               key={solution.id}
               type="button"
-              role="tab"
-              id={`solution-tab-${solution.id}`}
-              aria-selected={index === active}
-              aria-controls="solution-panel"
+              aria-current={index === active ? "true" : undefined}
+              aria-controls={`solution-${solution.id}`}
               className={cn("cl-tab", index === active && "is-active")}
-              onClick={() => setActive(index)}
+              onClick={() => goTo(index)}
             >
               {solution.tab}
             </button>
           ))}
         </div>
 
-        <div
-          id="solution-panel"
-          role="tabpanel"
-          aria-labelledby={`solution-tab-${item.id}`}
-          className={`cl-solution cl-tone-${item.id}`}
-          key={item.id}
-        >
-          <div className="cl-solution-copy">
-            <p className="cl-product-eyebrow">{item.product}</p>
-            <h3>{item.title}</h3>
-            <p>{item.copy}</p>
-            <ul>
-              {item.features.map((feature) => (
-                <li key={feature}>
-                  <Check size={15} strokeWidth={2.4} aria-hidden="true" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Link href={item.href} className="cl-text-link">
-              Know more about {item.product}{" "}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="cl-solution-visual">
-            <Image
-              src={item.image}
-              alt={`${item.product} screen`}
-              width={item.width}
-              height={item.height}
-              sizes="(max-width: 960px) 90vw, 640px"
-            />
-          </div>
-        </div>
+        {solutions.map((item) => (
+          <div
+            key={item.id}
+            id={`solution-${item.id}`}
+            className="cl-solution-group"
+          >
+            <article className={`cl-solution cl-tone-${item.id}`}>
+              <div className="cl-solution-copy">
+                <p className="cl-product-eyebrow">{item.product}</p>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+                <ul>
+                  {item.features.map((feature) => (
+                    <li key={feature}>
+                      <Check size={15} strokeWidth={2.4} aria-hidden="true" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={item.href} className="cl-text-link">
+                  Know more about {item.product}{" "}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              </div>
+              <div className="cl-solution-visual">
+                <Image
+                  src={item.image}
+                  alt={`${item.product} screen`}
+                  width={item.width}
+                  height={item.height}
+                  sizes="(max-width: 960px) 90vw, 640px"
+                />
+              </div>
+            </article>
 
-        <div className={`cl-banner cl-tone-${item.id}`}>
-          <p>{item.banner}</p>
-          <Link href={item.bannerHref} className="cl-btn cl-btn-dark">
-            {item.bannerCta} <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        </div>
+            <div className={`cl-banner cl-tone-${item.id}`}>
+              <p>{item.banner}</p>
+              <Link href={item.bannerHref} className="cl-btn cl-btn-dark">
+                {item.bannerCta} <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

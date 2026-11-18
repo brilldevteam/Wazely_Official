@@ -8,7 +8,6 @@ import {
   HomeAi,
   HomeAudience,
   HomeCapabilities,
-  HomeFreeTool,
   HomeIntro,
   HomeProcess,
   HomeStory,
@@ -27,7 +26,6 @@ export default function Home() {
       <HomeIntro />
       <HomeAi />
       <HomeSolutions />
-      <HomeFreeTool />
       <HomeCapabilities />
       <HomeProcess />
       <HomeStory />
